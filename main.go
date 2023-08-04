@@ -17,8 +17,8 @@ package main
 
 import (
 	"context"
-	"net/http"
 	"log"
+	"net/http"
 	"os"
 	"os/signal"
 	"strings"
@@ -66,7 +66,7 @@ func wsHandler(c echo.Context) error {
 		var r Request
 		err = ws.ReadJSON(&r)
 		if err != nil {
-			if strings.Contains(err.Error(),"websocket: close") {
+			if strings.Contains(err.Error(), "websocket: close") {
 				return nil
 			} else {
 				log.Panic(err)

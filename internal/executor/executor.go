@@ -32,7 +32,7 @@ type Executor struct {
 	IsQuery        bool
 	Input          []interface{}
 	Output         [][]interface{}
-	OutputPtr	   [][]interface{}
+	OutputPtr      [][]interface{}
 	LastInsertedId int64
 	RowsAffected   int64
 	Error          string
@@ -75,12 +75,12 @@ func New() *Executor {
 
 	// inicilizing output matrix
 
-	e.Output    = make([][]interface{},10,10)
-	e.OutputPtr = make([][]interface{},10,10)
-	for i,_ := range e.Output {
-		e.Output[i]    = make([]interface{},10,10)
-		e.OutputPtr[i] = make([]interface{},10,10)
-		for j,_:=range e.Output[i] {
+	e.Output = make([][]interface{}, 10, 10)
+	e.OutputPtr = make([][]interface{}, 10, 10)
+	for i, _ := range e.Output {
+		e.Output[i] = make([]interface{}, 10, 10)
+		e.OutputPtr[i] = make([]interface{}, 10, 10)
+		for j, _ := range e.Output[i] {
 			e.OutputPtr[i][j] = &e.Output[i][j]
 		}
 	}
@@ -111,11 +111,11 @@ func (e *Executor) Execute(stmt *sql.Stmt, tx *sql.Tx, sp string) {
 			defer rows.Close()
 			cols, _ := rows.Columns()
 			lenCol := len(cols)
-			i:=1
+			i := 1
 			for rows.Next() {
-				e.Output    = e.Output[:i]
+				e.Output = e.Output[:i]
 				e.OutputPtr = e.OutputPtr[:i]
-				e.Output[i-1]    = e.Output[i-1][:lenCol]
+				e.Output[i-1] = e.Output[i-1][:lenCol]
 				e.OutputPtr[i-1] = e.OutputPtr[i-1][:lenCol]
 				if err := rows.Scan(e.OutputPtr[i-1]...); err != nil {
 					log.Panic(err)
