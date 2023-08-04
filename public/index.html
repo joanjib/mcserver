@@ -1,0 +1,61 @@
+<!--
+Mcserver
+Copyright (C) 2023  JUAN JOSÉ IGLESIAS BLANCH
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>WebSocket</title>
+</head>
+
+<body>
+  <p id="output"></p>
+
+  <script>
+    var loc = window.location;
+    var uri = 'ws:';
+
+    if (loc.protocol === 'https:') {
+      uri = 'wss:';
+    }
+    uri += '//' + loc.host;
+    uri += loc.pathname + 'ws';
+
+    console.log(uri)
+
+    ws = new WebSocket(uri)
+
+    ws.onopen = function() {
+      console.log('Connected')
+      //ws.send(JSON.stringify({Action:"create_staff",Input: ["uname2","juanito2","Valderrama2", "nosque2", "222-333-444-5552"]}));
+      ws.send(JSON.stringify({Action:"query:select_staff",Input: []}));
+    }
+
+    ws.onmessage = function(evt) {
+      var out = document.getElementById('output');
+      out.innerHTML += evt.data + '<br>';
+    }
+    
+    /*
+    setInterval(function() {
+      ws.send(JSON.stringify({name:"Juanito",email:"valderrama"}));
+    }, 1000);*/
+  </script>
+</body>
+
+</html>
