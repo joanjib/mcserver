@@ -17,7 +17,7 @@ package sqlLoader
 
 import (
 	//"fmt"
-	"github.com/joanjib/fullness-server/internal/files"
+	"github.com/joanjib/mcserver/internal/files"
 	"io/ioutil"
 	"log"
 )

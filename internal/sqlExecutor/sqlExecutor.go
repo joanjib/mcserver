@@ -22,9 +22,9 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/joanjib/fullness-server/internal/executor"
-	"github.com/joanjib/fullness-server/internal/files"
-	"github.com/joanjib/fullness-server/internal/sqlLoader"
+	"github.com/joanjib/mcserver/internal/executor"
+	"github.com/joanjib/mcserver/internal/files"
+	"github.com/joanjib/mcserver/internal/sqlLoader"
 )
 
 var ExecutionQueue chan executor.ExecutorImpl
@@ -65,7 +65,7 @@ func resetStCache() {
 func SQLExecutor(dbFile string, sqlStatementsDir string, shotTimeOut int, schemaFile string) {
 	var tx *sql.Tx
 
-	db, err := sql.Open("sqlite3", "file:"+dbFile+"?_journal_mode=WAL&_synchronous=FULL")
+	db, err := sql.Open("sqlite3", "file:"+dbFile+"?_journal_mode=WAL&_synchronous=FULL&_foreign_keys=true")
 	if err != nil {
 		log.Panic(err)
 	}

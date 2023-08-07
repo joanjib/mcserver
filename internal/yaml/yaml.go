@@ -16,7 +16,7 @@
 package yaml
 
 import (
-	"github.com/joanjib/fullness-server/internal/files"
+	"github.com/joanjib/mcserver/internal/files"
 	"gopkg.in/yaml.v3"
 	"log"
 )

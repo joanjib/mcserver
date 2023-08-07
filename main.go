@@ -30,10 +30,10 @@ import (
 	"github.com/labstack/echo/v4/middleware"
 	//"github.com/labstack/gommon/log"
 
-	"github.com/joanjib/fullness-server/internal/config"
-	"github.com/joanjib/fullness-server/internal/executor"
-	"github.com/joanjib/fullness-server/internal/sqlExecutor"
-	"github.com/joanjib/fullness-server/internal/yaml"
+	"github.com/joanjib/mcserver/internal/config"
+	"github.com/joanjib/mcserver/internal/executor"
+	"github.com/joanjib/mcserver/internal/sqlExecutor"
+	"github.com/joanjib/mcserver/internal/yaml"
 )
 
 var upgrader = websocket.Upgrader{}

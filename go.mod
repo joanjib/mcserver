@@ -1,4 +1,4 @@
-module github.com/joanjib/fullness-server
+module github.com/joanjib/mcserver
 
 go 1.20
 
